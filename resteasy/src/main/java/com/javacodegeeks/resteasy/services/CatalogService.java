@@ -12,14 +12,16 @@ import org.jboss.resteasy.spi.NotFoundException;
 import com.javacodegeeks.resteasy.mockups.CatalogMockup;
 import com.javacodegeeks.resteasy.model.Catalog;
 import com.javacodegeeks.resteasy.model.Product;
+import com.javadoc.dao.CatalogDAO;
 
 @Path("/catalog")
 public class CatalogService {
 	@GET
 	@Path("/products")
 	@Produces("application/xml")
-	public Catalog getProducts() {	
-		return CatalogMockup.getProducts();
+	public Catalog getProducts() {
+		return CatalogDAO.getCatalog();
+		//return CatalogMockup.getProducts();
 	}
 
 	@GET
@@ -34,7 +36,8 @@ public class CatalogService {
 	@Path("/product/{productName}")
 	@Produces("application/xml")
 	public Product searchProduct(@PathParam("productName") String productName) {
-		Product product = CatalogMockup.searchProduct(productName);
+//		Product product = CatalogMockup.searchProduct(productName);
+		Product product = CatalogDAO.searchProduct(productName);
 		if (product == null) {
 			// By throwing this exception an 404 is send back
 			throw new NotFoundException("Product doesnt exist");

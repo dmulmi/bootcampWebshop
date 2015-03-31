@@ -7,6 +7,7 @@ import com.javacodegeeks.resteasy.model.Book;
 import com.javacodegeeks.resteasy.model.Catalog;
 import com.javacodegeeks.resteasy.model.DVD;
 import com.javacodegeeks.resteasy.model.Product;
+import com.javadoc.dao.CatalogDAO;
 
 public class CatalogMockup {
 
@@ -17,22 +18,24 @@ public class CatalogMockup {
 		products.add(prdt1);
 		products.add(prdt2);
 		return new Catalog(products);
+		//return CatalogDAO.getCatalog();
 	}
 
 	public static Product searchProduct(String productName) {
-		Catalog cat = getProducts();
-		List<Product> products = cat.getProductList();
-		Product prdt = null;
-		for (Product available : products) {
-			if (available.getProductName().equals(productName)) {
-				prdt = available;
-			}
-		}
-		if (prdt.getClass().getName().equals("Book"))
-			prdt = (Book) prdt;
-		else
-			prdt = (DVD) prdt;
-		return prdt;
+//		Catalog cat = getProducts();
+//		List<Product> products = cat.getProductList();
+//		Product prdt = null;
+//		for (Product available : products) {
+//			if (available.getProductName().equals(productName)) {
+//				prdt = available;
+//			}
+//		}
+//		if (prdt.getClass().getName().equals("Book"))
+//			prdt = (Book) prdt;
+//		else
+//			prdt = (DVD) prdt;
+//		return prdt;
+		return CatalogDAO.searchProduct(productName);
 	}
 
 }
