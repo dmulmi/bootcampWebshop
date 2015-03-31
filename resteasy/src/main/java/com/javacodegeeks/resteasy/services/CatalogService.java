@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import org.jboss.resteasy.spi.NotFoundException;
 
 import com.javacodegeeks.resteasy.mockups.CatalogMockup;
+import com.javacodegeeks.resteasy.model.Catalog;
 import com.javacodegeeks.resteasy.model.Product;
 
 @Path("/catalog")
@@ -17,16 +18,15 @@ public class CatalogService {
 	@GET
 	@Path("/products")
 	@Produces("application/xml")
-	public List<Product> getProducts() {
-		List<Product> products = CatalogMockup.getProducts();
-		return products;
+	public Catalog getProducts() {	
+		return CatalogMockup.getProducts();
 	}
 
 	@GET
 	@Path("/json/products")
 	@Produces("application/json")
 	public List<Product> getProductsJSON() {
-		List<Product> products = CatalogMockup.getProducts();
+		List<Product> products = CatalogMockup.getProducts().getProductList();
 		return products;
 	}
 

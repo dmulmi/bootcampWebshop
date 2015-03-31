@@ -4,33 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javacodegeeks.resteasy.model.Book;
+import com.javacodegeeks.resteasy.model.Catalog;
 import com.javacodegeeks.resteasy.model.DVD;
 import com.javacodegeeks.resteasy.model.Product;
 
 public class CatalogMockup {
-	
-	public static List<Product> getProducts()
-	{	
-		Product prdt1 = new Book(1,"java",21.5f,"NLW12AQWe234","Harry");
-		Product prdt2 = new DVD(2,"java",23.5f,"study");
+
+	public static Catalog getProducts() {
+		Book prdt1 = new Book(1, "java", 21.5f, "NLW12AQWe234", "Harry");
+		Book prdt2 = new Book(2, "java", 23.5f, "NLW12AQWe234WE", "Potter");
 		List<Product> products = new ArrayList<Product>();
 		products.add(prdt1);
 		products.add(prdt2);
-		return products;
+		return new Catalog(products);
 	}
-	
-	public static Product searchProduct(String productName)
-	{	
-		List<Product> products = getProducts();
+
+	public static Product searchProduct(String productName) {
+		Catalog cat = getProducts();
+		List<Product> products = cat.getProductList();
 		Product prdt = null;
-		for(Product available: products)
-		{
-			if(available.getProductName().equals(productName))
-			{
+		for (Product available : products) {
+			if (available.getProductName().equals(productName)) {
 				prdt = available;
 			}
 		}
+		if (prdt.getClass().getName().equals("Book"))
+			prdt = (Book) prdt;
+		else
+			prdt = (DVD) prdt;
 		return prdt;
 	}
-	
+
 }
