@@ -49,7 +49,7 @@ public class Book extends Product {
 		}
 		catch(NumberFormatException nfe){			
 		}
-		if(this.getProductName().contains(query) || author.contains(query) || isbn.contains(query))
+		if(this.getProductName().toUpperCase().contains(query.toUpperCase()) || author.toUpperCase().contains(query.toUpperCase()) || isbn.toUpperCase().contains(query.toUpperCase()))
 			return true;		
 		return false;
 	}

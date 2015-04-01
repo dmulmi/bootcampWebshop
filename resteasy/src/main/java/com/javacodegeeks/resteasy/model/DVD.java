@@ -36,7 +36,7 @@ public class DVD extends Product {
 		}
 		catch(NumberFormatException nfe){			
 		}
-		if(this.getProductName().contains(query) || Genre.contains(query))
+		if(this.getProductName().toUpperCase().contains(query.toUpperCase()) || Genre.toUpperCase().contains(query.toUpperCase()))
 			return true;		
 		return false;
 	}
