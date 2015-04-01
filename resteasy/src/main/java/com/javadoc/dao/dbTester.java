@@ -10,9 +10,9 @@ public class dbTester {
 		//Catalog c = CatalogDAO.getCatalog();
 		//CatalogDAO.addProduct(new Book(5,"Raising steam", 15.45F, "123452", "Terry Pratchett"));
 		//CatalogDAO.addProduct(new DVD(6,"Interstellar", 34.95F, "Sci-Fi"));
-		List<Product> temp = CatalogDAO.getCatalog().searchCatalog("pra");
-		for(Product p : temp)
-			System.out.println(p.getProductName());
+////		List<Product> temp = CatalogDAO.getCatalog().searchCatalog("pra");
+//		for(Product p : temp)
+//			System.out.println(p.getProductName());
 	}
 
 }

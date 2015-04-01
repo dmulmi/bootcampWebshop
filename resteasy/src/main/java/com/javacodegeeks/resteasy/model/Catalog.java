@@ -27,11 +27,11 @@ public class Catalog {
 		this.productList = productList;
 	}
 	
-	public List<Product> searchCatalog(String query){
-		List<Product>result = new ArrayList<Product>();
+	public Catalog searchCatalog(String query){
+		Catalog result = new Catalog(new ArrayList<Product>());
 		for(Product p : this.productList)
 			if(p.containQuery(query))
-				result.add(p);
+				result.getProductList().add(p);
 		return result;
 	}
 
