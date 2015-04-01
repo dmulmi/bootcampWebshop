@@ -73,7 +73,6 @@ public abstract class CatalogDAO {
 				query = "SELECT * FROM book WHERE `id` = ?";
 				stmt = conn.prepareStatement(query);
 				stmt.setLong(1, id);
-				//System.out.println(stmt);
 				rs = stmt.executeQuery();
 				if(rs.next())
 					return new Book(rs.getInt("id"), rs.getString("name"),
