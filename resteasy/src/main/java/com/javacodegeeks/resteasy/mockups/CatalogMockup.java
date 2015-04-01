@@ -21,7 +21,7 @@ public class CatalogMockup {
 		//return CatalogDAO.getCatalog();
 	}
 
-	public static Product searchProduct(String productName) {
+	public static Product searchProduct(long productName) {
 //		Catalog cat = getProducts();
 //		List<Product> products = cat.getProductList();
 //		Product prdt = null;
@@ -35,7 +35,7 @@ public class CatalogMockup {
 //		else
 //			prdt = (DVD) prdt;
 //		return prdt;
-		return CatalogDAO.searchProduct(productName);
+		return CatalogDAO.getProduct(productName);
 	}
 
 }

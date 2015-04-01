@@ -31,10 +31,10 @@ public class CatalogService {
 	}
 
 	@GET
-	@Path("/product/{productName}")
+	@Path("/product/{productId}")
 	@Produces("application/xml")
-	public Product searchProduct(@PathParam("productName") String productName) {
-		Product product = CatalogDAO.searchProduct(productName);
+	public Product searchProduct(@PathParam("productId") long productId) {
+		Product product = CatalogDAO.getProduct(productId);
 		if (product == null) {
 			// By throwing this exception an 404 is send back
 			throw new NotFoundException("Product doesnt exist");
@@ -43,10 +43,10 @@ public class CatalogService {
 	}
 	
 	@GET
-	@Path("/json/product/{productName}")
+	@Path("/json/product/{productId}")
 	@Produces("application/json")
-	public Product searchProductJson(@PathParam("productName") String productName) {
-		Product product = CatalogDAO.searchProduct(productName);
+	public Product searchProductJson(@PathParam("productName") long productId) {
+		Product product = CatalogDAO.getProduct(productId);
 		if (product == null) {
 			// By throwing this exception an 404 is send back
 			throw new NotFoundException("Product doesnt exist");

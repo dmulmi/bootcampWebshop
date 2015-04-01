@@ -25,6 +25,10 @@ public class Catalog {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
+	
+	public <List>Product searchCatalog(String query){
+		return null;
+	}
 
 	@Override
 	public int hashCode() {

@@ -57,11 +57,11 @@ public abstract class CatalogDAO {
 		return new Catalog(result);
 	}
 
-	public static Product searchProduct(String name) {
+	public static Product getProduct(long id) {
 		try {
-			String query = "SELECT * FROM dvd WHERE `name` = ?";
+			String query = "SELECT * FROM dvd WHERE `id` = ?";
 			PreparedStatement stmt = conn.prepareStatement(query);
-			stmt.setString(1, name);
+			stmt.setLong(1, id);
 			ResultSet rs = stmt.executeQuery();
 			//ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
@@ -70,10 +70,10 @@ public abstract class CatalogDAO {
 			}
 			else
 			{
-				query = "SELECT * FROM book WHERE `name` = ?";
+				query = "SELECT * FROM book WHERE `id` = ?";
 				stmt = conn.prepareStatement(query);
-				stmt.setString(1, name);
-				System.out.println(stmt);
+				stmt.setLong(1, id);
+				//System.out.println(stmt);
 				rs = stmt.executeQuery();
 				if(rs.next())
 					return new Book(rs.getInt("id"), rs.getString("name"),
