@@ -3,6 +3,8 @@ package com.javacodegeeks.resteasy.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.javadoc.dao.CatalogDAO;
+
 @XmlRootElement
 public class Product {
 	private long productId;

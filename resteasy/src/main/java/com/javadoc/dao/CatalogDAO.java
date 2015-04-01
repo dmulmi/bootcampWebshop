@@ -87,4 +87,54 @@ public abstract class CatalogDAO {
 		}
 		return null;
 	}
+	
+	public static void addProduct(Product p){
+		try {
+		if(p.getClass().getName()=="com.javacodegeeks.resteasy.model.Book"){
+			Book b = (Book) p;
+			String sql = "INSERT INTO book VALUES(?,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setLong(1, CatalogDAO.getLastUsedID()+1);
+			stmt.setString(2, b.getProductName());
+			stmt.setFloat(3, b.getPrice());
+			stmt.setString(4, b.getIsbn());
+			stmt.setString(5, b.getAuthor());
+			stmt.execute();
+		}
+		else{
+			DVD d = (DVD) p;
+			String sql = "INSERT INTO dvd VALUES(?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setLong(1, CatalogDAO.getLastUsedID()+1);
+			stmt.setString(2, d.getProductName());
+			stmt.setFloat(3, d.getPrice());
+			stmt.setString(4, d.getGenre());
+			stmt.execute();			
+		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static long getLastUsedID(){
+		try{
+			String sql = "SELECT MAX(`id`) FROM book";
+			String sql2 = "SELECT MAX(`id`) FROM dvd";
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			long result = rs.getLong(1);
+			rs = stmt.executeQuery(sql2);
+			rs.next();
+			if(result > rs.getLong(1))
+				return result;
+			else
+				return
+					rs.getLong(1);
+		}
+		catch(SQLException e){
+			return 0;
+		}
+	}
 }
