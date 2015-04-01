@@ -17,7 +17,7 @@ public class DVD extends Product {
 		Genre = genre;
 	}
 	
-@XmlElement
+	@XmlElement
 	public String getGenre() {
 		return Genre;
 	}
@@ -26,6 +26,20 @@ public class DVD extends Product {
 		Genre = genre;
 	}
 	
-	
+	@Override
+	public boolean containQuery(String query) {
+		try
+		{
+			int intQuery = Integer.valueOf(query);
+			if(this.getProductId() == intQuery)
+				return true;
+		}
+		catch(NumberFormatException nfe){			
+		}
+		if(this.getProductName().contains(query) || Genre.contains(query))
+			return true;		
+		return false;
+	}
+
 
 }

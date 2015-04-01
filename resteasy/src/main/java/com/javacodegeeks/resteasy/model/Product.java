@@ -73,5 +73,8 @@ public class Product {
 			return false;
 		return true;
 	}
-
+	
+	public boolean containQuery(String query){
+		return false;
+	}
 }

@@ -38,5 +38,20 @@ public class Book extends Product {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	@Override
+	public boolean containQuery(String query) {
+		try
+		{
+			int intQuery = Integer.valueOf(query);
+			if(this.getProductId() == intQuery)
+				return true;
+		}
+		catch(NumberFormatException nfe){			
+		}
+		if(this.getProductName().contains(query) || author.contains(query) || isbn.contains(query))
+			return true;		
+		return false;
+	}
 
 }

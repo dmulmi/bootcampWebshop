@@ -1,5 +1,6 @@
 package com.javacodegeeks.resteasy.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -26,8 +27,12 @@ public class Catalog {
 		this.productList = productList;
 	}
 	
-	public <List>Product searchCatalog(String query){
-		return null;
+	public List<Product> searchCatalog(String query){
+		List<Product>result = new ArrayList<Product>();
+		for(Product p : this.productList)
+			if(p.containQuery(query))
+				result.add(p);
+		return result;
 	}
 
 	@Override
